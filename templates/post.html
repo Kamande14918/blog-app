@@ -1,0 +1,39 @@
+<!-- filepath: /C:/Users/user/Ken_projects/portfolio/blog_app/templates/post.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="post">
+    <div class="post-header">
+        {% if post.user.profile_photo %}
+            <img src="{{ url_for('uploaded_file', filename=post.user.profile_photo) }}" alt="Profile Photo" class="profile-photo">
+        {% else %}
+            <i class="fas fa-user-circle profile-photo"></i>
+        {% endif %}
+        <div class="post-info">
+            <span class="username">{{ post.user.username }}</span>
+            <span class="date">{{ post.date_posted.strftime('%B %d, %Y') }}</span>
+        </div>
+    </div>
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-content">{{ post.content[:200] }}... <a href="{{ url_for('post', post_id=post.id) }}">Read more</a></p>
+    {% if post.image_file %}
+        <img src="{{ url_for('uploaded_file', filename=post.image_file) }}" alt="Post Image">
+    {% endif %}
+    {% if post.video_file %}
+        <video controls>
+            <source src="{{ url_for('uploaded_file', filename=post.video_file) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+    <div class="post-footer">
+        <form action="{{ url_for('upvote_post', post_id=post.id) }}" method="post">
+            <button type="submit" class="upvote-btn">Upvote</button>
+        </form>
+        <form action="{{ url_for('downvote_post', post_id=post.id) }}" method="post">
+            <button type="submit" class="downvote-btn">Downvote</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

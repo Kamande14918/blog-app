@@ -1,0 +1,19 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/view_space.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ space.name }}{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>{{ space.name }}</h1>
+        <p>Owner: {{ space.owner.username }}</p>
+        <button onclick="joinSpace({{ space.id }})">Join Space</button>
+        <!-- Add more details about the space here -->
+    </div>
+    <script>
+        function joinSpace(spaceId) {
+            // Implement the logic to join the space
+            alert('Joined space ' + spaceId);
+        }
+    </script>
+{% endblock %}

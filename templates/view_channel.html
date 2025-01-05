@@ -1,0 +1,19 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/view_channel.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ channel.name }}{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>{{ channel.name }}</h1>
+        <p>Owner: {{ channel.owner.username }}</p>
+        <button onclick="joinChannel({{ channel.id }})">Join Channel</button>
+        <!-- Add more details about the channel here -->
+    </div>
+    <script>
+        function joinChannel(channelId) {
+            // Implement the logic to join the channel
+            alert('Joined channel ' + channelId);
+        }
+    </script>
+{% endblock %}

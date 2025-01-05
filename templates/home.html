@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <div class="sidebar">
+            <button onclick="redirectToCreateChannel()">Create Channel</button>
+            <button onclick="redirectToCreateSpace()">Create Space</button>
+            <h3>Channels</h3>
+            <ul>
+                {% if current_user.channels %}
+                    {% for channel in current_user.channels %}
+                        <li><a href="{{ url_for('view_channel', channel_id=channel.id) }}">{{ channel.name }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li>No channels</li>
+                {% endif %}
+            </ul>
+            <h3>Spaces</h3>
+            <ul>
+                {% if current_user.spaces %}
+                    {% for space in current_user.spaces %}
+                        <li><a href="{{ url_for('view_space', space_id=space.id) }}">{{ space.name }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li>No spaces</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="content">
+            <div class="create-post">
+                <div class="input-group" onclick="redirectToCreatePost()">
+                    <textarea placeholder="What do you want to share?" readonly></textarea>
+                </div>
+            </div>
+            <div class="posts">
+                {% for post in posts %}
+                    <div class="post">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.content }}</p>
+                        {% if post.image_file %}
+                            <img src="{{ url_for('uploaded_file', filename=post.image_file) }}" alt="Post Image">
+                        {% endif %}
+                        {% if post.video_file %}
+                            <video controls>
+                                <source src="{{ url_for('uploaded_file', filename=post.video_file) }}" type="video/mp4">
+                            </video>
+                        {% endif %}
+                        <p>Posted by {{ post.user.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        function redirectToCreatePost() {
+            window.location.href = "{{ url_for('new_post') }}";
+        }
+        function redirectToCreateChannel() {
+            window.location.href = "{{ url_for('create_channel') }}";
+        }
+        function redirectToCreateSpace() {
+            window.location.href = "{{ url_for('create_space') }}";
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/create_channel.html -->
+{% extends 'base.html' %}
+
+{% block title %}Create Channel{% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+        <form action="{{ url_for('create_channel') }}" method="POST" class="auth-form">
+            <h2>Create Channel</h2>
+            <div class="form-group">
+                <label for="name">Channel Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <button type="submit" class="btn">Create Channel</button>
+        </form>
+    </div>
+{% endblock %}

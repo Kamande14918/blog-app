@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Create New Post{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>Create New Post</h1>
+        <form action="{{ url_for('new_post') }}" method="POST" enctype="multipart/form-data" class="new-post-form">
+            <div class="input-container">
+                <div class="input-group">
+                    <input type="text" id="title" name="title" placeholder="Title" required class="title-input">
+                    <textarea id="content" name="content" placeholder="Write your post..." required class="content-input"></textarea>
+                </div>
+                <div class="input-icons">
+                    <label for="file_input" class="file-input-label">
+                        <i class="fas fa-paperclip"></i>
+                        <input type="file" id="file_input" name="file_input" class="file-input" accept="image/*,video/*">
+                    </label>
+                    <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentInput = document.getElementById('content');
+            contentInput.addEventListener('input', function() {
+                contentInput.style.height = 'auto';
+                contentInput.style.height = contentInput.scrollHeight + 'px';
+            });
+        });
+    </script>
+{% endblock %}

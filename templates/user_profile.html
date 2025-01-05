@@ -1,0 +1,17 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/user_profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>{{ user.username }}'s Profile</h1>
+        <p>Email: {{ user.email }}</p>
+        {% if user.profile_photo %}
+            <img src="{{ url_for('uploaded_file', filename=user.profile_photo) }}" alt="Profile Picture">
+        {% else %}
+            <i class="fas fa-user" style="font-size: 100px;"></i>
+        {% endif %}
+        <button onclick="window.location.href='{{ url_for('update_account') }}'">Update Profile</button>
+    </div>
+{% endblock %}

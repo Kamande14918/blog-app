@@ -1,0 +1,31 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/following.html -->
+{% extends 'base.html' %}
+
+{% block title %}Following{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>Posts from Users You Follow</h1>
+        <div class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="post">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.content }}</p>
+                        {% if post.image_file %}
+                            <img src="{{ url_for('uploaded_file', filename=post.image_file) }}" alt="Post Image">
+                        {% endif %}
+                        {% if post.video_file %}
+                            <video controls>
+                                <source src="{{ url_for('uploaded_file', filename=post.video_file) }}" type="video/mp4">
+                            </video>
+                        {% endif %}
+                        <p>Posted by {{ post.user.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>You are not following any users or there are no posts from the users you follow.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

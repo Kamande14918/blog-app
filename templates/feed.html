@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Personalized Feed</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+                <form method="POST" action="{{ url_for('upvote_post', post_id=post.id) }}">
+                    <button type="submit">Upvote</button>
+                </form>
+                <form method="POST" action="{{ url_for('downvote_post', post_id=post.id) }}">
+                    <button type="submit">Downvote</button>
+                </form>
+                <span>Upvotes: {{ post.upvotes }}</span>
+                <span>Downvotes: {{ post.downvotes }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

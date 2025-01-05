@@ -1,0 +1,17 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/create_channel.html -->
+{% extends 'base.html' %}
+
+{% block title %}Create Space{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>Create Space</h1>
+        <form action="{{ url_for('create_space') }}" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="name">Space Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <button type="submit" class="btn">Create Space</button>
+        </form>
+    </div>
+{% endblock %}

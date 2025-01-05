@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Landing Page</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
+                <a href="{{ url_for('about') }}" class="navbar-item">About</a>
+                <a href="{{ url_for('register') }}" class="navbar-item">Sign Up</a>
+                <a href="{{ url_for('login') }}" class="navbar-item">Login</a>
+            </nav>
+        </header>
+        <main>
+            <section class="hero">
+                <h1>Welcome to Our Blog App</h1>
+                <p>Share your thoughts, connect with others, and explore new ideas.</p>
+                <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
+            </section>
+            <section class="features">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-pencil-alt"></i>
+                        <h3>Create Posts</h3>
+                        <p>Share your thoughts and ideas with the world.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-comments"></i>
+                        <h3>Engage with Community</h3>
+                        <p>Connect with like-minded individuals and engage in discussions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-share"></i>
+                        <h3>Share Content</h3>
+                        <p>Share your posts on social media and reach a wider audience.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="testimonials">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-item">
+                    <p>"This blog app has transformed the way I share my ideas. Highly recommended!"</p>
+                    <p>- User A</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"A fantastic platform to connect with others and explore new perspectives."</p>
+                    <p>- User B</p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <p>Contact us: info@blogapp.com</p>
+                <p>&copy; 2023 Blog App. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

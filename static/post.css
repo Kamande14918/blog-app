@@ -1,0 +1,181 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #000;
+}
+
+/* Buttons */
+button {
+    margin: 5px 0;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+form {
+    display: inline;
+}
+
+/* Vote Count */
+span {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: center;
+}
+
+/* Form Styling for New Post */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+form label {
+    font-size: 1rem;
+    color: #495057;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+form button {
+    align-self: start;
+    background-color: #007bff;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* New Post Form */
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: #f4f4f4;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.input-group textarea {
+    resize: none;
+    height: 50px;
+}
+
+.input-icons {
+    display: flex;
+    align-items: center;
+}
+
+.input-icons label {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.input-icons input[type="file"] {
+    display: none;
+}
+
+.input-icons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.input-icons button:hover {
+    color: #0056b3;
+}

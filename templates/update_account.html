@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Account{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>Update Account</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ current_user.username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ current_user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (leave blank to keep current password)</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="profile_photo">Profile Photo</label>
+                <input type="file" id="profile_photo" name="profile_photo">
+            </div>
+            <button type="submit" class="btn">Update Profile</button>
+        </form>
+    </div>
+{% endblock %}

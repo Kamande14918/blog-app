@@ -1,0 +1,17 @@
+<!-- filepath: /c:/Users/user/Ken_projects/portfolio/blog_app/templates/spaces.html -->
+{% extends 'base.html' %}
+
+{% block title %}Spaces{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1>Your Spaces</h1>
+        <ul>
+            {% for space in spaces %}
+                <li><a href="{{ url_for('view_space', space_id=space.id) }}">{{ space.name }}</a></li>
+            {% else %}
+                <li>No spaces</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

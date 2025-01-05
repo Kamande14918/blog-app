@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+    <h1>Edit Post</h1>
+    <form method="post" enctype="multipart/form-data" class="new-post-form" action="{{ url_for('edit_post', post_id=post.id) }}">
+        <div class="input-group">
+            <input type="text" id="title" name="title" value="{{ post.title }}" placeholder="Title" required>
+            <textarea id="content" name="content" placeholder="Write your post..." required>{{ post.content }}</textarea>
+            <div class="input-icons">
+                <label for="capture_image">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="capture_image" name="capture_image" accept="image/*" capture>
+                <label for="capture_video">
+                    <i class="fas fa-video"></i>
+                </label>
+                <input type="file" id="capture_video" name="capture_video" accept="video/*" capture>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
