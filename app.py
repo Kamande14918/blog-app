@@ -7,7 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Ken14918@localhost/blog_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Ken14918@localhost/blog_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -199,7 +199,7 @@ def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template("post.html", title=post.title, post=post)
 
-@app.route("/post/<int:post_id>/edit", methods=["GET", "POST"])
+@app.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -218,7 +218,7 @@ def edit_post(post_id):
         return redirect(url_for("post", post_id=post.id))
     return render_template("edit_post.html", post=post)
 
-@app.route("/post/<int:post_id>/delete", methods=["POST"])
+@app.route('/delete_post/<int:post_id>', methods=['POST'])
 @login_required
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)

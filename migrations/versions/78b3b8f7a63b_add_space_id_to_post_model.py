@@ -3,12 +3,20 @@ import sqlalchemy as sa
 from sqlalchemy.engine.reflection import Inspector
 
 # revision identifiers, used by Alembic.
-revision = 'f167862430fc'
-down_revision = '834e94d73a01'
+revision = '78b3b8f7a63b'
+down_revision = None
 branch_labels = None
 depends_on = None
 
 def upgrade():
+    # Drop the foreign key constraint on the 'bins' table
+    with op.batch_alter_table('bins') as batch_op:
+        batch_op.drop_constraint('bins_ibfk_2', type_='foreignkey')
+
+    # Add the 'subscriber_count' column to the 'channel' table
+    with op.batch_alter_table('channel') as batch_op:
+        batch_op.add_column(sa.Column('subscriber_count', sa.Integer(), nullable=True))
+
     # Drop the foreign key constraint first
     with op.batch_alter_table('post') as batch_op:
         batch_op.drop_constraint('post_ibfk_2', type_='foreignkey')

@@ -42,7 +42,8 @@
                 {% for post in posts %}
                     <div class="post">
                         <h2>{{ post.title }}</h2>
-                        <p>{{ post.content }}</p>
+                        <p class="post-content">{{ post.content | truncate(200) }}</p>
+                        <button class="read-more">Read More</button>
                         {% if post.image_file %}
                             <img src="{{ url_for('uploaded_file', filename=post.image_file) }}" alt="Post Image">
                         {% endif %}
@@ -67,5 +68,28 @@
         function redirectToCreateSpace() {
             window.location.href = "{{ url_for('create_space') }}";
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const readMoreButtons = document.querySelectorAll('.read-more');
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Ensure the button's previous sibling is the post content
+                    const postContent = this.closest('.post').querySelector('.post-content');
+                    if (postContent) {
+                        postContent.classList.toggle('expanded');
+
+                        // Update button text based on the expanded state
+                        if (postContent.classList.contains('expanded')) {
+                            this.textContent = 'Read Less';
+                        } else {
+                            this.textContent = 'Read More';
+                        }
+                    } else {
+                        console.error('Post content not found for this button.');
+                    }
+                });
+            });
+        });
     </script>
 {% endblock %}
